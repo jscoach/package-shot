@@ -14,12 +14,12 @@ app.get("/", async function (req, res) {
     u: Joi.string().default(""),
     d: Joi.number().integer().default(0),
     s: Joi.number().integer().default(0),
-    c: Joi.array().default("Major Browsers"),
-    i: Joi.string().default("https://js.coach/images/jess-small.svg"),
-    p: Joi.number().default(0),
+    c: Joi.array().default(["Major Browsers"]),
+    i: Joi.string().default("https://avatars2.githubusercontent.com/u/33937285?s=200&v=4"),
+    p: Joi.number().integer().default(0),
   });
 
-  const result = await schema.validate(req.query);
+  const result = await schema.validate(req.query);  
   const { value, error } = result;
   const valid = error == null;
   if (!valid) {
@@ -28,7 +28,7 @@ app.get("/", async function (req, res) {
       data: error,
     });
   } else {
-    const html = ejs.render(template, req.query);
+    const html = ejs.render(template, value);
     var renderStream = webshot(html, {
       siteType: "html",
       defaultWhiteBackground: true,
