@@ -1,12 +1,17 @@
 const express = require("express");
-const app = express();
-const webshot = require("node-webshot");
+const webShot = require("node-webshot");
 const ejs = require("ejs");
 const {readFile} = require("fs").promises;
 const Joi = require("@hapi/joi");
+const compression = require('compression')
+const cors = require('cors')
 
 if (!process.env.now) require("dotenv").config();
-const port = process.env.now ? 8080 : 3000;
+const port = process.env.now ? 8080 : 9000;
+
+const app = express();
+app.use(compression())
+app.use(cors())
 
 app.get("/", async function (req, res) {
   const template = await readFile("./views/template.ejs", {encoding: "utf8"});
@@ -32,7 +37,7 @@ app.get("/", async function (req, res) {
     });
   } else {
     const html = ejs.render(template, value);
-    var renderStream = webshot(html, {
+    const renderStream = webShot(html, {
       siteType: "html",
       defaultWhiteBackground: true,
       windowSize: {width: 973, height: 525},
