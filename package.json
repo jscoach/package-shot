@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,11 @@
   "homepage": "https://github.com/jscoach/package-shot#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "node-html-to-image": "^1.2.0",
-    "node-webshot": "^1.0.3"
+    "node-webshot": "^1.0.3",
+    "nodemon": "^2.0.3"
   }
 }
