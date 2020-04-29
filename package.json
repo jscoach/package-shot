@@ -1,0 +1,27 @@
+{
+  "name": "package-shot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jscoach/package-shot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jscoach/package-shot/issues"
+  },
+  "homepage": "https://github.com/jscoach/package-shot#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "node-html-to-image": "^1.2.0",
+    "node-webshot": "^1.0.3"
+  }
+}

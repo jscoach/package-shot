@@ -1,0 +1,209 @@
+<!-- http://localhost:3000/?n=react-viewport-list&v=v2.1.0&l=MIT&u=11hour&c[]=android&s=8000&d=845347&i=%22https://avatars0.githubusercontent.com/u/4243232?v=4&s=128%22 -->
+<!DOCTYPE html>
+<html style="background: #ffffff;">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Karla:400,700"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        -webkit-text-size-adjust: 100%;
+        font-family: Karla, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue,
+          Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+          Noto Color Emoji;
+        line-height: 1.5;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: linear-gradient(298deg, #1d143e 100%, #1d143e);
+      }
+      body.popular {
+        background-image: linear-gradient(298deg, #ffd200 100%, #fec93e);
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        list-style-type: none;
+        display: inline-block;
+      }
+      .extra-info {
+        background-color: #fff6df;
+        /* padding: 20px; */
+        margin-top: 26px;
+        height: 304px;
+        position: relative;
+      }
+      .extra-info ul {
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 0;
+        margin: 0;
+        padding-top: 64px;
+      }
+      .extra-info ul li {
+        width: 33%;
+        text-align: center;
+      }
+      .extra-info ul li h2 {
+        width: 100%;
+        font-size: 64px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        text-align: center;
+        color: #000000;
+        line-height: 38px;
+        margin: 0;
+        margin-bottom: 18px;
+        white-space: nowrap;
+      }
+      .extra-info ul li:first-child h2 {
+        font-size: 38px;
+      }
+      .extra-info ul li h3 {
+        width: 100%;
+        font-size: 32px;
+        line-height: 32px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        text-align: center;
+        color: #000000;
+        margin: 0;
+      }
+      .main-info {
+        padding: 16px;
+      }
+
+      .main-info h1 {
+        font-size: 64px;
+        margin: 0;
+        padding: 0;
+        padding-left: 16px;
+        color: #ffffff;
+        width: 760px;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .popular .main-info h1 {
+        color: #000000;
+      }
+      .main-info ul {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-left: 16px;
+      }
+      .main-info ul li {
+        font-size: 42px;
+        font-weight: bold;
+        color: #ffffff;
+        margin-right: 54px;
+      }
+      .popular .main-info ul li {
+        color: #444444;
+      }
+      .main-info img {
+        width: 160px;
+        height: 160px;
+        border-radius: 8px;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+      }
+      .jess-small-a {
+        width: 62px;
+        height: 62px;
+      }
+      .footer {
+        position: absolute;
+        width: 100%;
+        margin-top: 30px;
+        bottom: 30px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .footer span {
+        display: inline-block;
+        vertical-align: baseline;
+        zoom: 1;
+        *display: inline;
+        *vertical-align: auto;
+        position: relative;
+        padding: 0 20px;
+      }
+      .footer span:before {
+        content: "";
+        display: block;
+        width: 1000px;
+        position: absolute;
+        top: 30px;
+        border-top: 2px solid #1d143e;
+        right: 100%;
+      }
+
+      .footer span:after {
+        content: "";
+        display: block;
+        width: 1000px;
+        position: absolute;
+        top: 30px;
+        border-top: 2px solid #1d143e;
+        left: 100%;
+      }
+      .popular .footer span:before,
+      .popular .footer span:after {
+        border-top: 2px solid #fec93e;
+      }
+      .footer .js-coach {
+        font-size: 48px;
+        font-weight: bold;
+        line-height: 1.17;
+        color: rgba(29, 20, 62, 0.8);
+        vertical-align: top;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body class="<%= p===1 ? 'popular' : '' %>">
+    <div class="main-info">
+      <img src="<%= i %>" alt="" />
+      <h1 id="packageName"><%= n %></h1>
+      <ul>
+        <li><%= v %></li>
+        <li><%= l %></li>
+        <li><%= u %></li>
+      </ul>
+    </div>
+    <div class="extra-info">
+      <ul>
+        <li>
+          <h2><%= c.join(" & ");%></h2>
+          <h3>COMPATIBILITY</h3>
+        </li>
+        <li>
+          <h2 class="num"><%= s %></h2>
+          <h3>STAR</h3>
+        </li>
+        <li>
+          <h2 class="num"><%= d %></h2>
+          <h3>DOWNLOAD</h3>
+        </li>
+      </ul>
+      <div class="footer">
+        <span>
+          <img
+            class="jess-small-a"
+            src="https://js.coach/images/jess-small.svg"
+          />
+          <a class="js-coach">JS.coach</a>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>
