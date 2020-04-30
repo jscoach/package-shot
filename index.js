@@ -2,6 +2,7 @@ const express = require("express");
 const webShot = require("node-webshot");
 const ejs = require("ejs");
 const {readFile} = require("fs").promises;
+const path = require("path");
 const Joi = require("@hapi/joi");
 const compression = require('compression')
 const cors = require('cors')
@@ -14,7 +15,7 @@ app.use(compression())
 app.use(cors())
 
 app.get("/", async function (req, res) {
-  const template = await readFile("./views/template.ejs", {encoding: "utf8"});
+  const template = await readFile(path.join(__dirname, './views/template.ejs'), {encoding: "utf8"});
   const schema = Joi.object({
     n: Joi.string().default(""),
     v: Joi.string().default(""),
