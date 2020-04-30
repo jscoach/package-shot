@@ -1,11 +1,12 @@
 const express = require("express");
-const webShot = require("node-webshot");
 const ejs = require("ejs");
 const {readFile} = require("fs").promises;
 const path = require("path");
 const Joi = require("@hapi/joi");
 const compression = require('compression')
 const cors = require('cors')
+const nodeHtmlToImage = require('node-html-to-image')
+const getScreenshot = require('./screenshot');
 
 if (!process.env.now) require("dotenv").config();
 const port = process.env.now ? 8080 : 9000;
@@ -37,26 +38,15 @@ app.get("/", async function (req, res) {
       data: error,
     });
   } else {
-    const html = ejs.render(template, value);
-    const renderStream = webShot(html, {
-      siteType: "html",
-      defaultWhiteBackground: true,
-      windowSize: {width: 973, height: 525},
-      quality: 100,
-      renderDelay: 2000,
-    });
+    const html = await ejs.render(template, value);
+    const file = await getScreenshot(html);
 
-    res.writeHead(200, {"Content-Type": "text/plain"});
-    renderStream.on("data", function (chunk) {
-      res.write(chunk.toString("base64"), "base64");
-    });
-
-    renderStream.on("end", function () {
-      res.end();
-    });
+    res.setHeader('Content-Type', `image/png`);
+    res.end(file);
   }
 });
 
 app.listen(port, function () {
   console.log(`Started on PORT ${port}`);
 });
+
